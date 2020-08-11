@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="container-fluid h-100">
+        <form action="/" method="post">
+            <div class="row justify-content-center py-5">
+                <div class="col-auto border border-dark rounded mx-0">
+                    {% for question in questions %}
+                        <div class="h5 text-left">
+                            <label name="q_{{ loop.index }}" class="pt-3" id="question_{{ loop.index }}">{{ loop.index }}   {{ question['question'] }}</label>
+                            <div class="form-check pl-5">
+                                <input class="form-check-input" type="radio" name="radio_{{ loop.index }}" id="opt_one_{{ loop.index }}" value="1 {{ question['question_id'] }}">
+                                <label class="form-check-label" for="opt_one_{{ loop.index }}">a. {{ question['option_one'] }}</label>
+                            </div>
+                            <div class="form-check pl-5">
+                                <input class="form-check-input" type="radio" name="radio_{{ loop.index }}" id="opt_two_{{ loop.index }}" value="2 {{ question['question_id'] }}">
+                                <label class="form-check-label" for="opt_two_{{ loop.index }}">b. {{ question['option_two'] }}</label>
+                            </div>
+                            <div class="form-check pl-5">
+                                <input class="form-check-input" type="radio" name="radio_{{ loop.index }}" id="opt_three_{{ loop.index }}" value="3 {{ question['question_id'] }}">
+                                <label class="form-check-label" for="opt_three_{{ loop.index }}">c. {{ question['option_three'] }}</label>
+                            </div>
+                            <div class="form-check pl-5">
+                                <input class="form-check-input" type="radio" name="radio_{{ loop.index }}" id="opt_four_{{ loop.index }}" value="4 {{ question['question_id'] }}">
+                                <label class="form-check-label" for="opt_four_{{ loop.index }}">d. {{ question['option_four'] }}</label>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="pt-3 text-center mb-3">
+                        <button class="btn btn-primary btn-md w-50" type="submit">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
